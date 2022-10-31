@@ -1,19 +1,32 @@
-# Getting Started
+# spring-boot-redis-cache
+Spring Boot Redis Cache
 
-### Reference Documentation
-For further reference, please consider the following sections:
+## Objective
+This is a sample spring boot project that connects to redis server (installed on local host). 
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.5/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.5/reference/htmlsingle/#web)
-* [Spring Data Redis (Access+Driver)](https://docs.spring.io/spring-boot/docs/2.7.5/reference/htmlsingle/#data.nosql.redis)
+## How it works
+- Cache confuguration can be found on application.prooperties file. 
+- Upon calling the API end point, the required data will be first searched in Redis cache. If not found, then service will be executed. 
+- Data on cache will be available on for TTL duration (600000ms for our PoC)
 
-### Guides
-The following guides illustrate how to use some features concretely:
+## API Contract
+- URL: http://localhost:8080/templates/template/1
+- Method: GET
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Messaging with Redis](https://spring.io/guides/gs/messaging-redis/)
+## Redis installation steps: 
+Reference link: https://www.youtube.com/watch?v=lgWjGkdrExA
 
+- Install redis: 
+  brew update
+  brew install redis
+- Start service
+  brew services start redis
+- Check service status
+  redis-cli ping
+- Monitor redis
+  redis-cli monitor
+- Stop Service
+  brew services stop redis
+- Uninstall Redis
+  brew uninstall redis
+ 
